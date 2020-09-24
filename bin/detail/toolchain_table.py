@@ -42,7 +42,8 @@ class Toolchain:
   def verify(self):
     if self.arch:
       assert(self.is_nmake or self.is_msvc or self.is_ninja)
-      assert(self.arch == 'amd64' or self.arch == 'x86')
+      assert(self.arch == 'amd64' or self.arch == 'x86' or
+             self.arch == 'arm' or self.arch == 'arm64')
 
     if self.is_nmake or self.is_msvc:
       assert(self.vs_version)
@@ -344,6 +345,30 @@ if os.name == 'nt':
           'vs-14-2015-arm',
           'Visual Studio 14 2015 ARM',
           vs_version='14'
+      ),
+      Toolchain(
+          'vs-15-2017-arm',
+          'Visual Studio 15 2017',
+          arch='arm',
+          vs_version='15'
+      ),
+      Toolchain(
+          'vs-15-2017-arm64',
+          'Visual Studio 15 2017',
+          arch='arm64',
+          vs_version='15'
+      ),
+      Toolchain(
+          'vs-16-2019-arm',
+          'Visual Studio 16 2019',
+          arch='arm',
+          vs_version='16'
+      ),
+      Toolchain(
+          'vs-16-2019-arm64',
+          'Visual Studio 16 2019',
+          arch='arm64',
+          vs_version='16'
       ),
       Toolchain(
           'vs-15-2017-win64',
